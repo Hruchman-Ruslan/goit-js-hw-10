@@ -14,7 +14,7 @@ body {
   min-height: 100vh;
 
   background: linear-gradient(
-    48deg,
+    74deg,
     rgba(24, 187, 156, 1) 0%,
     rgba(67, 135, 166, 1) 23%,
     rgba(187, 24, 148, 1) 71%,
@@ -22,7 +22,7 @@ body {
   );
 
   background-size: 400%;
-  animation: gradient 5s infinite linear;
+  animation: gradient 10s infinite reverse;
 }
 
 @keyframes gradient {
