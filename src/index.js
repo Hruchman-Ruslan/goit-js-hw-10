@@ -1,6 +1,6 @@
 import './css/styles.css';
 import { fetchCountries } from './js/fetchCountries';
-import { getRefs } from './js/get_refs';
+import { getRefs } from './js/getRefs';
 import { createListMarkupCountry } from './js/createListMarcupCountry';
 import { createListMarkupInfoCountry } from './js/createListMarcupInfoCountry';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
@@ -28,18 +28,21 @@ const renderCountry = country => {
   }
 };
 
+const handleSearchCountry = e => {
+  e.preventDefault();
+
+  const searchCountry = e.target.value.trim();
+
+  if (searchCountry) {
+    fetchCountries(searchCountry).then(renderCountry).catch(onFetchError);
+  }
+
+  refs.countryListRef.innerHTML = '';
+  refs.countryInfoRef.innerHTML = '';
+};
+
 refs.inputRef.addEventListener(
   'input',
-  debounce(e => {
-    e.preventDefault();
-
-    const searchCountry = e.target.value.trim();
-
-    if (searchCountry) {
-      fetchCountries(searchCountry).then(renderCountry).catch(onFetchError);
-    }
-
-    refs.countryListRef.innerHTML = '';
-    refs.countryInfoRef.innerHTML = '';
-  }, DEBOUNCE_DELAY)
+  debounce(handleSearchCountry),
+  DEBOUNCE_DELAY
 );
