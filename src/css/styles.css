@@ -81,6 +81,10 @@ body {
   gap: 60px;
 }
 
+.country-info__img {
+  filter: drop-shadow(6px 6px 15px #9503a8);
+}
+
 .country-info__title {
   font-weight: 900;
   font-size: 120px;
